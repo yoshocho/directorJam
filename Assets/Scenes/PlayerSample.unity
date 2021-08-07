@@ -435,12 +435,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539014254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17425629ac2824b40a91324d6e83c397, type: 3}
+  m_Script: {fileID: 11500000, guid: 676c481b9cef7ef489a291fcfad62a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 10
   m_bullet: {fileID: 7150369881599072476, guid: d4373748a7bd3e04a9b13eac1681ad08,
     type: 3}
+  m_rate: 0.25
 --- !u!65 &1539014257
 BoxCollider:
   m_ObjectHideFlags: 0
