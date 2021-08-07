@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -10,25 +9,25 @@ public class Player : MonoBehaviour
     float m_fh;
     float m_fv;
     Vector3 tmp;
-    //NavMeshAgent agent = null;
 
     bool m_fire = false;
     [SerializeField]GameObject m_bullet;
 
+<<<<<<< HEAD
+=======
     float m_timeElpsed;
     [SerializeField] float m_rate;
 
     // Start is called before the first frame update
+>>>>>>> b292e8d2cab6b22aa62f9e3a390da44da808d01e
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        //agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(m_fire);
         Fire();
     }
 
@@ -45,12 +44,14 @@ public class Player : MonoBehaviour
         m_fh = Input.GetAxisRaw("FireHorizontal");
         m_fv = Input.GetAxisRaw("FireVertical");
         tmp = this.transform.position;//自分の位置
-
-        Debug.Log(m_fh + "," + m_fv);
     }
 
     void idou()
     {
+<<<<<<< HEAD
+        m_rb.velocity = new Vector3(m_speed * m_h, m_rb.velocity.y, m_rb.velocity.z);//横移動
+        m_rb.velocity = new Vector3(m_rb.velocity.x, m_rb.velocity.y, m_speed * m_v);//縦移動
+=======
         m_rb.velocity = new Vector3(m_speed * m_h, m_rb.velocity.y, m_speed * m_v);//移動
 
         //if (m_h != 0 || m_v != 0)
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         //    var direction = new Vector3(m_fh, 0, m_fv);
         //    transform.localRotation = Quaternion.LookRotation(direction);
         //}
+>>>>>>> b292e8d2cab6b22aa62f9e3a390da44da808d01e
     }
 
     void Fire()//攻撃処理
