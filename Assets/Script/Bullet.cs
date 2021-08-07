@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
         m_fh = Input.GetAxisRaw("FireHorizontal");
         m_fv = Input.GetAxisRaw("FireVertical");
         Rigidbody m_rb = GetComponent<Rigidbody>();
-        m_rb.velocity = new Vector3(m_fh * m_bulletSpeed, m_rb.velocity.y, m_fv * m_bulletSpeed);
+        m_rb.velocity = new Vector3(m_fh, m_rb.velocity.y, m_fv).normalized * m_bulletSpeed;
         Destroy(this.gameObject, m_bulletLifeTime);
     }
 }
