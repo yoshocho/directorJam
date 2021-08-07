@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawn : MonoBehaviour
+public class PlayerStartPosi : MonoBehaviour
 {
     [SerializeField] GameObject player1;
     [SerializeField] GameObject player2;
@@ -18,12 +18,6 @@ public class PlayerSpawn : MonoBehaviour
 
     Vector3 point_player1;
 
-    /*
-     *  Instantiate で出現させてるので
-     * 初めからフィールドにある時は増えます
-     * 
-     *  Instantiate から GameObject.transform.position = point_player に後でする
-     */
 
     private void Start()
     {
@@ -35,7 +29,7 @@ public class PlayerSpawn : MonoBehaviour
 
         // test用
         float big = spawnArea_player1.transform.localScale.x;
-        if(big< spawnArea_player1.transform.localScale.z)
+        if (big < spawnArea_player1.transform.localScale.z)
         {
             big = spawnArea_player1.transform.localScale.z;
         }
@@ -43,28 +37,35 @@ public class PlayerSpawn : MonoBehaviour
         {
             spaceLenge = big / 2;
         }
-        
-        
-        Spawn(player1, spawnArea_player1.transform.localScale, spawnArea_player1.transform.position);
 
-        Spawn2(player2, spawnArea_player2.transform.localScale, spawnArea_player2.transform.position);
+
+        Player1_Move(player1, spawnArea_player1.transform.localScale, spawnArea_player1.transform.position);
+
+        Player2_Move(player2, spawnArea_player2.transform.localScale, spawnArea_player2.transform.position);
 
 
         //Destroy(this);
     }
 
-    private void Spawn(GameObject orig, Vector3 area, Vector3 center)
+    public void TestMove()
+    {
+
+        Player1_Move(player1, spawnArea_player1.transform.localScale, spawnArea_player1.transform.position);
+
+        Player2_Move(player2, spawnArea_player2.transform.localScale, spawnArea_player2.transform.position);
+    }
+
+    private void Player1_Move(GameObject orig, Vector3 area, Vector3 center)
     {
         point_player1 = center + new Vector3(Random.Range(-area.x / 2, area.x / 2), 0, Random.Range(-area.z / 2, area.z / 2));
 
-        Instantiate(
-           orig,
-           point_player1,
-           Quaternion.identity
-           );
+        orig.transform.position = point_player1;
+
+        // 爆弾で使えるかも
+        // Instantiate(orig, point_player1, Quaternion.identity);
     }
 
-    private void Spawn2(GameObject orig, Vector3 area, Vector3 center)
+    private void Player2_Move(GameObject orig, Vector3 area, Vector3 center)
     {
         Vector3 point_player2 = center + new Vector3(Random.Range(-area.x / 2, area.x / 2), 0, Random.Range(-area.z / 2, area.z / 2));
         while (spaceLenge > (point_player1 - point_player2).magnitude)
@@ -75,11 +76,6 @@ public class PlayerSpawn : MonoBehaviour
             point_player2 = center + new Vector3(Random.Range(-area.x / 2, area.x / 2), 0, Random.Range(-area.z / 2, area.z / 2));
         }
 
-
-        Instantiate(
-           orig,
-           point_player2,
-           Quaternion.identity
-           );
+        orig.transform.position = point_player2;
     }
 }
