@@ -6,12 +6,14 @@ public class Player : MonoBehaviour
     [SerializeField] float m_speed;
     float m_h;
     float m_v;
+    float m_f;
     float m_fh;
     float m_fv;
     Vector3 tmp;
     [SerializeField] int m_playerNum;
 
     bool m_fire = false;
+    bool m_fireButton = false;
     [SerializeField]GameObject m_bullet;
 
     float m_timeElpsed;
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
         m_v = Input.GetAxis("Vertical" + m_playerNum);//縦移動入力
         m_fh = Input.GetAxisRaw("FireHorizontal" + m_playerNum);
         m_fv = Input.GetAxisRaw("FireVertical" + m_playerNum);
+        m_f = Input.GetAxisRaw("Fire");
         tmp = this.transform.position;//自分の位置
     }
 
@@ -61,8 +64,14 @@ public class Player : MonoBehaviour
             m_fire = true;
         }
 
+        m_fireButton = false;
+        if (m_f < 0)
+        {
+            m_fireButton = true;
+        }
+
         m_timeElpsed += Time.deltaTime;
-        if (m_rate < m_timeElpsed && m_fire)
+        if (m_rate < m_timeElpsed && m_fire && m_fireButton)
         {
             Instantiate(m_bullet, new Vector3(tmp.x, tmp.y, tmp.z), this.transform.rotation);
             m_timeElpsed = 0;
