@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     float m_fh;
     float m_fv;
     [SerializeField] int m_playerNum;
+    [SerializeField] int m_damage = 1;
 
     void Start()
     {
@@ -16,4 +17,11 @@ public class Bullet : MonoBehaviour
         m_rb.velocity = new Vector3(m_fh, m_rb.velocity.y, m_fv).normalized * m_bulletSpeed;
         Destroy(this.gameObject, m_bulletLifeTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var players = other.GetComponent<IDamage>();
+        players.AddDamage(m_damage);
+    }
+
 }
