@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] SceneChangeFade m_sceneManager;
 
-    [SerializeField] string m_retryScene = "";
+    [SerializeField] string m_titleScene = "";
 
     [SerializeField] float m_fadeTime = 2f;
 
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        m_retryButton.gameObject.SetActive(false);
+       // m_retryButton.gameObject.SetActive(false);
         m_player1Hp.Player1Deth
              .Subscribe(_ => Player2Win());
         m_player2HP.Player2Deth
@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
         Scene loadScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(loadScene.name);
 
+    }
+
+    public void Title()
+    {
+        
+        m_sceneManager.LoadSceneWithFade(m_fadeTime, m_titleScene);
     }
 
 }
