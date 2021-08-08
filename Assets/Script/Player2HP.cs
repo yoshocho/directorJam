@@ -4,7 +4,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class Player1HP : MonoBehaviour,IDamage
+public class Player2HP : MonoBehaviour,IDamage
 {
     /// <summary>
     /// playerのHP
@@ -21,22 +21,16 @@ public class Player1HP : MonoBehaviour,IDamage
     /// <summary>
     /// イベントの購読のみ公開
     /// </summary>
-    public IObservable<Unit> Player1Deth => playerHpSubject;
+    public IObservable<Unit> Player2Deth => playerHpSubject;
     private void Start()
     {
         hp.Value = m_hp;
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hp.Value -= 5;
-        }
     }
 
     public void AddDamage(int damage)
     {
         hp.Value -= damage;
+
         if (hp.Value <= 0)
         {
             playerHpSubject.OnNext(Unit.Default);
