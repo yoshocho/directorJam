@@ -22,24 +22,19 @@ public class Player1HP : MonoBehaviour,IDamage
     /// イベントの購読のみ公開
     /// </summary>
     public IObservable<Unit> Player1Deth => playerHpSubject;
+
+    bool playerDeth = true;
     private void Start()
     {
         hp.Value = m_hp;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            hp.Value -= 5;
-        }
-    }
-
     public void AddDamage(int damage)
     {
         hp.Value -= damage;
-        if (hp.Value <= 0)
+        if (hp.Value <= 0 && playerDeth == true)
         {
             playerHpSubject.OnNext(Unit.Default);
+            playerDeth = false;
         }
     }
 }
