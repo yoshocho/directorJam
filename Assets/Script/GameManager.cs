@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Player1HP m_player1Hp;
 
+    [SerializeField] Player2HP m_player2HP;
+
     void Start()
     {
-        m_player1Hp.PlayerDeth
+        m_player1Hp.Player1Deth
              .Subscribe(_ => Player2Win());
     }
 
