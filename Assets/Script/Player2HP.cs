@@ -24,6 +24,7 @@ public class Player2HP : MonoBehaviour,IDamage
     public IObservable<Unit> Player2Deth => playerHpSubject;
 
     [SerializeField] GameManager m_gameManager;
+    [SerializeField] AudioClip m_audioClip;
     private void Start()
     {
         hp.Value = m_hp;
@@ -31,6 +32,7 @@ public class Player2HP : MonoBehaviour,IDamage
 
     public void AddDamage(int damage)
     {
+        AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
         hp.Value -= damage;
         if (hp.Value <= 0 && m_gameManager.m_gamrEnd == true)
         {
