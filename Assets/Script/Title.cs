@@ -9,11 +9,13 @@ public class Title : MonoBehaviour
     [SerializeField] float m_fadeTime = 2f;
     [SerializeField] string m_titleScene = "";
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-       if( Input.GetButtonDown("Fire10"))
+       if( Input.GetButtonDown("Fire0"))
         {
-            m_sceneManager.LoadSceneWithFade(m_fadeTime, m_titleScene);
+            Debug.Log("aasaa");
+            m_sceneManager.StartCoroutine(m_sceneManager.LoadSceneWithFade(m_fadeTime, m_titleScene));
+                //LoadSceneWithFade(m_fadeTime, m_titleScene);
         }
     }
 
