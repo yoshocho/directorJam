@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     float m_fv;
     [SerializeField] int m_playerNum;
     [SerializeField] int m_damage = 1;
+    [SerializeField] int m_enemy;
 
     void Start()
     {
@@ -20,13 +21,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var players = other.GetComponent<IDamage>();
+        var players = other.gameObject.GetComponent<IDamage>();
         if (players != null)
         {
             players.AddDamage(m_damage);
         }
 
-        Destroy(this.gameObject);
+        if (other.gameObject.tag == "Player" + m_enemy)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

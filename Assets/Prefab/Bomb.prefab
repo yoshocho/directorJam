@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4463455630845555027
+--- !u!1 &6757477950791519139
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4656678393912193897}
-  - component: {fileID: 617280142322791404}
-  - component: {fileID: 7236851112852035169}
-  - component: {fileID: 2402140973744622504}
-  - component: {fileID: 513920107234205062}
-  - component: {fileID: -6832606403600553039}
+  - component: {fileID: 1418801150193935072}
+  - component: {fileID: 7064797896726974512}
+  - component: {fileID: 265821280305409855}
+  - component: {fileID: 8162038787060443648}
+  - component: {fileID: 9135123782898298332}
+  - component: {fileID: -953033609040729962}
   m_Layer: 0
-  m_Name: BombBullet
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4656678393912193897
+--- !u!4 &1418801150193935072
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
+  m_GameObject: {fileID: 6757477950791519139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.4240332, y: 2.1772213, z: -5.1854086}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &617280142322791404
+--- !u!33 &7064797896726974512
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
+  m_GameObject: {fileID: 6757477950791519139}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7236851112852035169
+--- !u!23 &265821280305409855
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
+  m_GameObject: {fileID: 6757477950791519139}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,40 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2402140973744622504
+--- !u!65 &8162038787060443648
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
+  m_GameObject: {fileID: 6757477950791519139}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &513920107234205062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c0e5427500c224aa35d350d24ce4f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_bombBulletSpeed: 3
-  m_bombBulletLifeTime: 5
---- !u!54 &-6832606403600553039
+--- !u!54 &9135123782898298332
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463455630845555027}
+  m_GameObject: {fileID: 6757477950791519139}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -125,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-953033609040729962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757477950791519139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2b2734870991444b0ff6bb5d164a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bombBullet: {fileID: 5253499150803169599, guid: cb31aaf28625ede4d90942385a26c3c0,
+    type: 3}
