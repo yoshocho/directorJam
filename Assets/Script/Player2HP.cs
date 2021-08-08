@@ -22,6 +22,8 @@ public class Player2HP : MonoBehaviour,IDamage
     /// イベントの購読のみ公開
     /// </summary>
     public IObservable<Unit> Player2Deth => playerHpSubject;
+
+    bool playerDeth = true;
     private void Start()
     {
         hp.Value = m_hp;
@@ -31,9 +33,10 @@ public class Player2HP : MonoBehaviour,IDamage
     {
         hp.Value -= damage;
 
-        if (hp.Value <= 0)
+        if (hp.Value <= 0 && playerDeth == true)
         {
             playerHpSubject.OnNext(Unit.Default);
+            playerDeth = false;
         }
     }
 }
