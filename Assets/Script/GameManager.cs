@@ -30,11 +30,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float m_fadeTime = 2f;
 
-    [SerializeField] GameObject m_retryButton;
+    //[SerializeField] GameObject m_retryButton;
+
+    [SerializeField] Canvas m_gameCanvas;
 
     void Start()
     {
-       // m_retryButton.gameObject.SetActive(false);
+        m_gameCanvas.gameObject.SetActive(false);
         m_player1Hp.Player1Deth
              .Subscribe(_ => Player2Win());
         m_player2HP.Player2Deth
@@ -47,14 +49,14 @@ public class GameManager : MonoBehaviour
     {
         m_player1Text.text = "Win!!";
         m_player2Text.text = "Lose....";
-        m_retryButton.gameObject.SetActive(true);
+        m_gameCanvas.gameObject.SetActive(true);
     }
 
    void Player2Win()
     {
         m_player2Text.text = "Win!!";
         m_player1Text.text = "Lose....";
-        m_retryButton.gameObject.SetActive(true);
+        m_gameCanvas.gameObject.SetActive(true);
     }
 
     public void Retry()

@@ -8,6 +8,8 @@ public class BombBullet : MonoBehaviour
     [SerializeField] bool m_bombMood;
     [SerializeField] int m_damage = 1;
     [SerializeField] GameObject m_me;
+
+    [SerializeField] AudioClip m_audioClip;
     void Start()
     {
         Rigidbody m_rb = GetComponent<Rigidbody>();
@@ -28,7 +30,7 @@ public class BombBullet : MonoBehaviour
         {
             m_rb.velocity = new Vector3(randomx, m_rb.velocity.y, randomy).normalized * m_bombBulletSpeed;
         }
-       
+        AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
         Destroy(this.gameObject, m_bombBulletLifeTime);
     }
 
@@ -42,6 +44,7 @@ public class BombBullet : MonoBehaviour
 
         if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2")
         {
+            AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
             Destroy(this.gameObject);
         }
     }
