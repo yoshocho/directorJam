@@ -24,6 +24,11 @@ public class BombBullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var players = other.GetComponent<IDamage>();
-        players.AddDamage(m_damage);
+        if (players != null)
+        {
+            players.AddDamage(m_damage);
+        }
+
+        Destroy(this.gameObject);
     }
 }
