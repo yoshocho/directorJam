@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     float m_fh;
     float m_fv;
     Vector3 tmp;
+    [SerializeField] int m_playerNum;
 
     bool m_fire = false;
     [SerializeField]GameObject m_bullet;
@@ -35,10 +36,10 @@ public class Player : MonoBehaviour
 
     void PlayerNow()
     {
-        m_h = Input.GetAxis("Horizontal");//横移動入力
-        m_v = Input.GetAxis("Vertical");//縦移動入力
-        m_fh = Input.GetAxisRaw("FireHorizontal");
-        m_fv = Input.GetAxisRaw("FireVertical");
+        m_h = Input.GetAxis("Horizontal" + m_playerNum);//横移動入力
+        m_v = Input.GetAxis("Vertical" + m_playerNum);//縦移動入力
+        m_fh = Input.GetAxisRaw("FireHorizontal" + m_playerNum);
+        m_fv = Input.GetAxisRaw("FireVertical" + m_playerNum);
         tmp = this.transform.position;//自分の位置
     }
 
