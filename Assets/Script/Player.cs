@@ -13,16 +13,17 @@ public class Player : MonoBehaviour
     bool m_fire = false;
     [SerializeField]GameObject m_bullet;
 
-    // Start is called before the first frame update
+    float m_timeElpsed;
+    [SerializeField] float m_rate;
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        Debug.Log(m_fire);
         Fire();
     }
 
@@ -39,14 +40,16 @@ public class Player : MonoBehaviour
         m_fh = Input.GetAxisRaw("FireHorizontal");
         m_fv = Input.GetAxisRaw("FireVertical");
         tmp = this.transform.position;//自分の位置
-
-        Debug.Log(m_fh + "," + m_fv);
     }
 
     void idou()
     {
-        m_rb.velocity = new Vector3(m_speed * m_h, m_rb.velocity.y,m_rb.velocity.z);//横移動
-        m_rb.velocity = new Vector3(m_rb.velocity.x, m_rb.velocity.y,m_speed * m_v);//縦移動
+
+        m_rb.velocity = new Vector3(m_speed * m_h, m_rb.velocity.y, m_rb.velocity.z);//横移動
+        m_rb.velocity = new Vector3(m_rb.velocity.x, m_rb.velocity.y, m_speed * m_v);//縦移動
+
+        m_rb.velocity = new Vector3(m_speed * m_h, m_rb.velocity.y, m_speed * m_v);//移動
+
     }
 
     void Fire()//攻撃処理
@@ -57,9 +60,11 @@ public class Player : MonoBehaviour
             m_fire = true;
         }
 
-        if (m_fire)
+        m_timeElpsed += Time.deltaTime;
+        if (m_rate < m_timeElpsed && m_fire)
         {
             Instantiate(m_bullet, new Vector3(tmp.x, tmp.y, tmp.z), this.transform.rotation);
+            m_timeElpsed = 0;
         }
     }
 }
