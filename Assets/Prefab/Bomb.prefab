@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bombBullet: {fileID: 5253499150803169599, guid: cb31aaf28625ede4d90942385a26c3c0,
     type: 3}
+  m_audioClip: {fileID: 8300000, guid: b3e4b3005f471a8448a53d7b25833ff8, type: 3}
