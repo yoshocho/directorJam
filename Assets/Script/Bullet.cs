@@ -42,6 +42,11 @@ public class Bullet : MonoBehaviour
             AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
             Destroy(this.gameObject);
         }
+        if (other.gameObject.tag == "kabe")
+        {
+            AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
+            Destroy(this.gameObject);
+        }
     }
 
 }

@@ -8,11 +8,12 @@ public class BombBullet : MonoBehaviour
     [SerializeField] bool m_bombMood;
     [SerializeField] int m_damage = 1;
     [SerializeField] GameObject m_me;
+    Rigidbody m_rb;
 
-    [SerializeField] AudioClip m_audioClip;
+[SerializeField] AudioClip m_audioClip;
     void Start()
     {
-        Rigidbody m_rb = GetComponent<Rigidbody>();
+        m_rb = GetComponent<Rigidbody>();
         float randomx = UnityEngine.Random.Range(-1f, 1f);
         float randomy = UnityEngine.Random.Range(-1f, 1f);
 
@@ -46,6 +47,11 @@ public class BombBullet : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
             Destroy(this.gameObject);
+        }
+
+        if(other.gameObject.tag == "kabe")
+        {
+            m_rb.velocity = new Vector3(this.transform.position.x * -1, m_rb.velocity.y, this.transform.position.z *-1).normalized * m_bombBulletSpeed;
         }
     }
 }
