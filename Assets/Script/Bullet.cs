@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] int m_damage = 1;
     [SerializeField] int m_enemy;
 
+    [SerializeField] AudioClip m_audioClip;
+
     void Start()
     {
         m_fh = Input.GetAxisRaw("FireHorizontal" + m_playerNum);
@@ -37,6 +39,7 @@ public class Bullet : MonoBehaviour
 
         if (other.gameObject.tag == "Player" + m_enemy)
         {
+            AudioSource.PlayClipAtPoint(m_audioClip, transform.position);
             Destroy(this.gameObject);
         }
     }
