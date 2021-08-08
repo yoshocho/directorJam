@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
     }
 
     public bool m_gamrEnd;
-    [SerializeField] Text m_player1Text = default;
+    //[SerializeField] Text m_player1Text = default;
 
-    [SerializeField] Text m_player2Text = default;
+    //[SerializeField] Text m_player2Text = default;
 
     [SerializeField] Player1HP m_player1Hp;
 
@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
         lose2.gameObject.SetActive(true);
         m_gameCanvas.gameObject.SetActive(true);
+
+        m_gameStart = false;
     }
 
    void Player2Win()
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
         win2.gameObject.SetActive(true);
 
         lose1.gameObject.SetActive(true);
+
+        m_gameStart = false;
     }
 
     public void Retry()
@@ -83,8 +87,8 @@ public class GameManager : MonoBehaviour
 
     public void Title()
     {
-        
-        m_sceneManager.LoadSceneWithFade(m_fadeTime, m_titleScene);
+
+        m_sceneManager.StartCoroutine(m_sceneManager.LoadSceneWithFade(m_fadeTime, m_titleScene));
     }
 
 }
