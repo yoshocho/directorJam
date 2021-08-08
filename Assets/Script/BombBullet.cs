@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BombBullet : MonoBehaviour
 {
@@ -10,13 +11,22 @@ public class BombBullet : MonoBehaviour
     void Start()
     {
         Rigidbody m_rb = GetComponent<Rigidbody>();
-        if(m_bombMood)
+        float randomx = UnityEngine.Random.Range(-1f, 1f);
+        float randomy = UnityEngine.Random.Range(-1f, 1f);
+
+        float radian = (float)Math.Atan2(randomy, randomx);
+        float degree = (float)(radian * 180d / Math.PI);
+
+        Quaternion q = Quaternion.Euler(0, degree, 0);
+        this.transform.rotation = q * this.transform.rotation;
+
+        if (m_bombMood)
         {
-            m_rb.velocity = new Vector3(Random.Range(-1f, 1f) * m_bombBulletSpeed, m_rb.velocity.y, Random.Range(-1f, 1f) * m_bombBulletSpeed);
+            m_rb.velocity = new Vector3(randomx * m_bombBulletSpeed, m_rb.velocity.y, randomy * m_bombBulletSpeed);
         }
         else
         {
-            m_rb.velocity = new Vector3(Random.Range(-1f, 1f), m_rb.velocity.y, Random.Range(-1f, 1f)).normalized * m_bombBulletSpeed;
+            m_rb.velocity = new Vector3(randomx, m_rb.velocity.y, randomy).normalized * m_bombBulletSpeed;
         }
        
         Destroy(this.gameObject, m_bombBulletLifeTime);
