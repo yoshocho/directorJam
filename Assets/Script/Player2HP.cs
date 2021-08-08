@@ -23,7 +23,7 @@ public class Player2HP : MonoBehaviour,IDamage
     /// </summary>
     public IObservable<Unit> Player2Deth => playerHpSubject;
 
-    bool playerDeth = true;
+    [SerializeField] GameManager m_gameManager;
     private void Start()
     {
         hp.Value = m_hp;
@@ -32,11 +32,10 @@ public class Player2HP : MonoBehaviour,IDamage
     public void AddDamage(int damage)
     {
         hp.Value -= damage;
-
-        if (hp.Value <= 0 && playerDeth == true)
+        if (hp.Value <= 0 && m_gameManager.m_gamrEnd == true)
         {
             playerHpSubject.OnNext(Unit.Default);
-            playerDeth = false;
+            m_gameManager.m_gamrEnd = false;
         }
     }
 }

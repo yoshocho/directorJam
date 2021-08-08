@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
 
     void Fire()//攻撃処理
     {
+        Debug.Log(m_fire+","+m_fireButton);
         m_fire = false;
         if (m_fh != 0 || m_fv != 0)
         {
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour
         m_timeElpsed += Time.deltaTime;
         if (m_rate < m_timeElpsed && m_fire && m_fireButton)
         {
-            Instantiate(m_bullet, new Vector3(tmp.x, tmp.y, tmp.z), this.transform.rotation);
+            Instantiate(m_bullet, new Vector3(m_muzzle.transform.position.x, tmp.y, m_muzzle.transform.position.z), this.transform.rotation);
             m_timeElpsed = 0;
         }
     }

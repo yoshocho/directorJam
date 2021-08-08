@@ -6,6 +6,7 @@ public class BombBullet : MonoBehaviour
     [SerializeField] float m_bombBulletLifeTime = 5f;
     [SerializeField] bool m_bombMood;
     [SerializeField] int m_damage = 1;
+    [SerializeField] GameObject m_me;
     void Start()
     {
         Rigidbody m_rb = GetComponent<Rigidbody>();
@@ -23,12 +24,15 @@ public class BombBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var players = other.GetComponent<IDamage>();
+        var players = other.gameObject.GetComponent<IDamage>();
         if (players != null)
         {
             players.AddDamage(m_damage);
         }
 
-        Destroy(this.gameObject);
+        if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

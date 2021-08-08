@@ -109,7 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bombBulletSpeed: 3
   m_bombBulletLifeTime: 5
-  m_bombMood: 1
+  m_bombMood: 0
+  m_damage: 1
+  m_me: {fileID: 0}
 --- !u!54 &6067747512869989341
 Rigidbody:
   m_ObjectHideFlags: 0
