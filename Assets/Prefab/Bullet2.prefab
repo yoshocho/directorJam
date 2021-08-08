@@ -110,6 +110,8 @@ MonoBehaviour:
   m_bulletSpeed: 3
   m_bulletLifeTime: 5
   m_playerNum: 2
+  m_damage: 1
+  m_enemy: 1
 --- !u!54 &3130414628264376375
 Rigidbody:
   m_ObjectHideFlags: 0
