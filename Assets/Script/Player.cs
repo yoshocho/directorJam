@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(m_gameManager.GameStart)
+        if(m_gameManager.GameStart == true)
         {
             Fire();
             Muzzle();
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         
-        if (m_gameManager.GameStart)
+        if (m_gameManager.GameStart == true)
         {
             PlayerNow();
             idou();

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     
 
-    bool m_gameStart= false;
+    public bool m_gameStart= false;
     public bool GameStart
     {
         get { return m_gameStart; }
@@ -30,6 +30,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float m_fadeTime = 2f;
 
+    [SerializeField] Image lose1;
+
+    [SerializeField] Image win1;
+
+    [SerializeField] Image lose2;
+
+    [SerializeField] Image win2;
+
     //[SerializeField] GameObject m_retryButton;
 
     [SerializeField] Canvas m_gameCanvas;
@@ -47,16 +55,22 @@ public class GameManager : MonoBehaviour
    
     void Player1Win()
     {
-        m_player1Text.text = "Win!!";
-        m_player2Text.text = "Lose....";
+        //m_player1Text.text = "Win!!";
+        //m_player2Text.text = "Lose....";
+        win1.gameObject.SetActive(true);
+
+        lose2.gameObject.SetActive(true);
         m_gameCanvas.gameObject.SetActive(true);
     }
 
    void Player2Win()
     {
-        m_player2Text.text = "Win!!";
-        m_player1Text.text = "Lose....";
+        //m_player2Text.text = "Win!!";
+        //m_player1Text.text = "Lose....";
         m_gameCanvas.gameObject.SetActive(true);
+        win2.gameObject.SetActive(true);
+
+        lose1.gameObject.SetActive(true);
     }
 
     public void Retry()
