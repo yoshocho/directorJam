@@ -107,11 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9897cc3e57a26f4da4daf461bdaf96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletSpeed: 10
+  m_bulletSpeed: 25
   m_bulletLifeTime: 5
   m_playerNum: 1
   m_damage: 1
   m_enemy: 2
+  m_audioClip: {fileID: 0}
 --- !u!54 &-3446914538116009822
 Rigidbody:
   m_ObjectHideFlags: 0
