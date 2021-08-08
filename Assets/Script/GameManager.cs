@@ -6,12 +6,14 @@ using UniRx;
 public class GameManager : MonoBehaviour
 {
 
-    private bool m_gameStart= false;
+    bool m_gameStart= false;
     public bool GameStart
     {
         get { return m_gameStart; }
         set { m_gameStart = value; }
     }
+
+    public bool m_gamrEnd;
     [SerializeField] Text m_player1Text = default;
 
     [SerializeField] Text m_player2Text = default;
